@@ -1,0 +1,2 @@
+cloudscraper>=1.2.71
+pandas>=2.0.0

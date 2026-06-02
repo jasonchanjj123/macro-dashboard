@@ -1,0 +1,502 @@
+{
+  "fetched_at": "2026-06-02T22:08:50+08:00",
+  "chart_count": 11,
+  "charts": [
+    {
+      "id": 12,
+      "name": "美國-實質GDP",
+      "slug": "real-gdp-growth",
+      "url": "https://www.macromicro.me/charts/12/real-gdp-growth",
+      "country": "us",
+      "prev_date": "2025-10-01",
+      "prev_value": 0.5,
+      "latest_date": "2026-01-01",
+      "latest_value": 2.0,
+      "n_series": 2,
+      "count_booked": 1305,
+      "count_comments": 27,
+      "count_liked": 0,
+      "description": "國內生產毛額（Gross Domestic Product，GDP），指一國在一段特定期間內，所生產的最終勞動或商品的總價值，為衡量一個國家經濟狀況和發展水平的重要經濟指標。未剔除通膨影響前為「名目 GDP 」，剔除通膨影響則稱為「實質 GDP 」，較能反映真實經濟成長。  GDP 統計方式每個國家略有不同，美國採直接公佈季調年化 GDP 絕對值，將當季數值經季節調整後乘以 4，折算成年度數據（Seasonally adjusted annual rate, SAAR）的絕對值，因此美國公佈的 GDP 可以直接視為當季預估的全年 GDP 絕對值。  而 GDP 數據經上述調整後，可以再分別計算「年增率」及「季增年率」。 1. 年增率：將今年當季與去年同季相比。 2. 季增年率：將最新一季的年度數據與前一季做對比，並換算成年率（4 次方）。  美國公佈的 GDP 市場多關注季增年增率，但該數值以單季增速進行年化，所以變動較劇烈，M平方認為年增率同樣重要，美國 GDP 年增率若能維持在 2%，代表經濟仍然強勁！  註：上述計算各國都有自己的慣用方式。如美國慣用季調年化 GDP 絕對值，並分別計算成年增率、季增年率；歐盟則同時公佈季增率、年增率；日本、韓國及台灣同時公佈 3 種經濟成長率，其中台灣市場習慣觀察年增率。"
+    },
+    {
+      "id": 53,
+      "name": "美國-領先指標(經濟諮商局)＆GDP",
+      "slug": "leading-gdp",
+      "url": "https://www.macromicro.me/charts/53/leading-gdp",
+      "country": "us",
+      "prev_date": "2025-12-01",
+      "prev_value": -3.937007874015748,
+      "latest_date": "2026-01-01",
+      "latest_value": -3.846153846153851,
+      "n_series": 2,
+      "count_booked": 1179,
+      "count_comments": 9,
+      "count_liked": 0,
+      "description": "此領先指標為經濟諮商局公佈，由以下 10 項指標統整編製而成。  1. 製造業員工平均每週工時 2. 初次申請失業救濟金人數 3. 製造業新訂單 - 消費性用品及相關原物料 4. ISM 新訂單 5. 製造業新訂單 - 扣除航空之非國防資本財 6. 建築許可 - 新增私人房屋單位數量 7. S&P 500 股價指數 8. 領先信用（貸）指數 9. 10 年期國庫券與聯邦基金之利率差 10. 消費者對商業狀況的平均預期  註：通常年增率出現衰退（< 0%）時，美國 GDP 皆在未來 2 至 3 季出現明顯下滑，屆時需特別留意衰退風險。"
+    },
+    {
+      "id": 108463,
+      "name": "美國-MM景氣衰退機率",
+      "slug": "us-mm-recession-probability",
+      "url": "https://www.macromicro.me/charts/108463/us-mm-recession-probability",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": 20.9308,
+      "latest_date": "2026-04-01",
+      "latest_value": 16.0622,
+      "n_series": 1,
+      "count_booked": 127,
+      "count_comments": 0,
+      "count_liked": 0,
+      "description": "M平方根據美國主要經濟指標，並利用動態邏輯迴歸模型（Dynamic Logistic Regression Model）編製 MM 美國景氣衰退機率。主要參考變數有：非農就業成長、失業率、 ISM 製造業 PMI 、工業生產指數等 7 項指標。  M平方參考 NBER 、 OECD 等機構的研究定義美國經濟衰退，每次經濟衰退的情況不同，一般來說會伴隨 GDP 出現負成長、失業率上升、股市大跌等情況。  本指標於每月第 2 週週一更新當月最新數據，因成分變數延後公佈或修正值，絕對值將相應調整。亦將於每輪循環後追蹤最新金融環境判斷變數的有效性，以決定是否增加或減少相關變數。"
+    },
+    {
+      "id": 6,
+      "name": "美國-非農vs.失業率",
+      "slug": "employment-condition",
+      "url": "https://www.macromicro.me/charts/6/employment-condition",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": 185.0,
+      "latest_date": "2026-04-01",
+      "latest_value": 115.0,
+      "n_series": 2,
+      "count_booked": 2933,
+      "count_comments": 25,
+      "count_liked": 0,
+      "description": "美國就業市場調查主要分為：企業端調查（CES）及電話問卷調查（CPS），非農就業人口數月增（以下簡稱非農月增）、失業率分屬於兩項調查。其中，非農月增變化可以觀察短期新增的就業動能，失業率則代表長期就業市場的趨勢。  經濟穩健、強勁時期，非農月增通常會落在 15 ~ 20 萬之間、失業率則會不斷降低。而當經濟步入衰退時，非農月增會率先翻負，接著失業率才開始回升，反映就業市場放緩的趨勢。  其中失業率可以與聯準會公佈的季度經濟預測（Summary of Economic Projections，SEP）中，長期失業率預估數字進行比較，當失業率低於長期失業率預估，通常代表就業市場較緊俏，反之則較寬鬆。"
+    },
+    {
+      "id": 20,
+      "name": "美國-每小時薪資&僱傭成本指數(年增率)",
+      "slug": "wage-growth",
+      "url": "https://www.macromicro.me/charts/20/wage-growth",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": 3.43,
+      "latest_date": "2026-04-01",
+      "latest_value": 3.57,
+      "n_series": 2,
+      "count_booked": 847,
+      "count_comments": 5,
+      "count_liked": 0,
+      "description": "每小時薪資，是統計僱員加班、晚班加給及小費的薪資總收入，但不包含公司福利、不定期獎金及工資稅等，可實際反映僱員收入。  美國僱傭成本指數（Employment Cost Index, ECI），是統計企業支付勞工薪資、健康保險等福利的成本，ECI 的增長會大幅降低企業利潤，並提高企業轉嫁成本給消費者的可能，因此被聯準會視為薪資通膨螺旋是否發生的重要指標。"
+    },
+    {
+      "id": 4,
+      "name": "美國-零售銷售-汽車相關",
+      "slug": "us-retail-sales-motor-vehicle-parts-dealers",
+      "url": "https://www.macromicro.me/charts/4/us-retail-sales-motor-vehicle-parts-dealers",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": -1.76,
+      "latest_date": "2026-04-01",
+      "latest_value": -1.16,
+      "n_series": 2,
+      "count_booked": 478,
+      "count_comments": 0,
+      "count_liked": 0,
+      "description": "美國零售銷售額（Retail Sales）是由美國商務部普查局（U.S. Census Bureau）隨機抽樣 12,000 家企業所做的統計調查。其中，汽車銷售（含二手車）與維護佔整體零售銷售額約 20 ~ 22%，是評估美國經濟的關鍵風向球。  根據 NAICS Code 定義，汽車銷售主要業務包括：新舊車零售展示、週邊零組件銷售、售後服務與維修、車輛登記註冊與融資服務。而納入統計的車輛款式有：一般乘用轎車、運動型多功能休旅車、小型客貨車、輕型卡車。"
+    },
+    {
+      "id": 7,
+      "name": "美國-ISM製造業&非製造業指數",
+      "slug": "ism",
+      "url": "https://www.macromicro.me/charts/7/ism",
+      "country": "us",
+      "prev_date": "2026-04-01",
+      "prev_value": 52.7,
+      "latest_date": "2026-05-01",
+      "latest_value": 54.0,
+      "n_series": 2,
+      "count_booked": 813,
+      "count_comments": 2,
+      "count_liked": 0,
+      "description": "美國製造業與非製造業廠商預期狀況，以50為基準點。"
+    },
+    {
+      "id": 5,
+      "name": "美國-長短期公債利差vs.GDP年增率",
+      "slug": "us-business-cycles",
+      "url": "https://www.macromicro.me/charts/5/us-business-cycles",
+      "country": "us",
+      "prev_date": "2025-07-01",
+      "prev_value": 2.3,
+      "latest_date": "2025-10-01",
+      "latest_value": 2.0,
+      "n_series": 2,
+      "count_booked": 636,
+      "count_comments": 0,
+      "count_liked": 0,
+      "description": "長天期公債殖利率常被拿來檢視該國景氣通膨狀況，短天期則常被拿來預測該國利率決策，兩者利差可代表著景氣循環的四個階段：  1. 經濟成長階段：經濟活動強勁、通膨預期溫和，短利受央行升息影響上升較快，長短利差持續縮窄。  2. 經濟過熱階段：經濟活動過熱、通膨預期強勁，迫使央行加快升息導致短利超越長利，長短利差翻負。  3. 經濟衰退階段：通膨抑制消費，利率高檔引發違約風險，整體經濟轉弱，央行降息刺激經濟，短利快速下降，利差負值收斂翻正。  4. 經濟復甦階段：央行維持寬鬆，債券殖利率曲線維持穩定正斜率（長利大於短利），利差高檔持穩。"
+    },
+    {
+      "id": 3,
+      "name": "美國-耐久財新訂單",
+      "slug": "durable-goods",
+      "url": "https://www.macromicro.me/charts/3/durable-goods",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": 9.96,
+      "latest_date": "2026-04-01",
+      "latest_value": 10.44,
+      "n_series": 2,
+      "count_booked": 977,
+      "count_comments": 3,
+      "count_liked": 0,
+      "description": "耐久財新訂單（Durable Goods Orders）是指「預計能被使用超過 3 年以上的商品」之訂單狀況，為美國普查局（U.S. Census Bureau）於每個月 25 日前後提供前月「製造業出貨、存貨與訂單報告（Manufactures’ Shipment, Inventories, and Orders）」裡非常重要的一項數據。由於製造商在擬定生產計畫前必須先有訂單，進而帶動生產，因此，耐久財新訂單被視為製造業景氣的領先指標。  在這份報告中，「耐久財」相對於「非耐久財」更備受關注，其原因為非耐久財（如衣服、食品）的需求變動不大且容易預測，因此真正值得留意、影響製造業景氣的是「耐久財訂單」。  耐久財訂單中又可細分成「運輸設備」如飛機採購、「國防設備」如軍機採購、「資本財」如企業機器、「一般消費性耐久財」如汽車、家電、電腦與電子產品等。  不過，由於耐久財訂單容易受到國防設備（軍機）、運輸設備（飛機）等金額龐大的訂單影響，波動較為劇烈，因此建議將這兩者扣除後再進行觀察。排除軍機、軍艦以及飛彈等非民間相關的「非國防資本財」，更是首要觀察的指標。"
+    },
+    {
+      "id": 11,
+      "name": "美國-房價指數(年增率)",
+      "slug": "house-condition",
+      "url": "https://www.macromicro.me/charts/11/house-condition",
+      "country": "us",
+      "prev_date": "2026-01-01",
+      "prev_value": 331.801,
+      "latest_date": "2026-02-01",
+      "latest_value": 332.098,
+      "n_series": 2,
+      "count_booked": 472,
+      "count_comments": 0,
+      "count_liked": 0,
+      "description": "從房價指數的年增率變化可以看出，美國房地產循環約 18 年一次，如 1990 、 2008 年的衰退均與房地產崩盤有關。  房價走勢也受升、降息影響，當聯準會啟動升息循環，美國房價漸受壓抑，整體房市年增動能趨緩，反之亦然。"
+    },
+    {
+      "id": 10,
+      "name": "美國-消費者物價指數[CPI]",
+      "slug": "cpi",
+      "url": "https://www.macromicro.me/charts/10/cpi",
+      "country": "us",
+      "prev_date": "2026-03-01",
+      "prev_value": 3.29,
+      "latest_date": "2026-04-01",
+      "latest_value": 3.78,
+      "n_series": 3,
+      "count_booked": 4855,
+      "count_comments": 6,
+      "count_liked": 0,
+      "description": "美國消費者物價指數（Consumer Price Index, CPI），是普遍用來觀察一國通膨的指標，同時也是各國央行制定貨幣政策的重要觀察數據。  美國聯準會的三大目標為：1. 促進最大就業；2. 穩定國內物價；3. 長期適當的利率。聯準會提出 2% 通膨的目標，並於多年以來重申至今，讓美國經濟在增長的同時，給予市場評估經濟是否過熱、聯邦基準利率是否合理的依據。  核心 CPI 則扣除價格波動較大的食品與能源項目，更能真實反映家庭單位購買大宗商品、服務價格的實際狀況，也能避免暫時性國際供需因素導致的波動，是市場更加關注的重點。  註：SA 、 NSA 分別為經季節性調整，以及非經季節性調整。經季節性調整排除每年固定的週期性因素，可以更清楚地觀察數據趨勢；而非經季節性調整則通常用於團體勞動合約、養老金計畫等實際支付條款中，也是美國勞動部新聞稿及市場常見使用的數據。"
+    }
+  ],
+  "market_indicators": [
+    {
+      "id": 77,
+      "name": "美國-FedWatch升降息機率",
+      "value": "1.60",
+      "suffix": "%",
+      "slug": "probability-fed-rate-hike",
+      "url": "https://www.macromicro.me/charts/77/probability-fed-rate-hike"
+    },
+    {
+      "id": 144242,
+      "name": "美國-FedWatch年底利率預期(2026)",
+      "value": "最終升息0碼",
+      "suffix": "",
+      "slug": "us-number-yearend-rate-2026",
+      "url": "https://www.macromicro.me/charts/144242/us-number-yearend-rate-2026"
+    },
+    {
+      "id": 75,
+      "name": "美國-10年期公債殖利率",
+      "value": "4.44",
+      "suffix": "%",
+      "slug": "10-year-bond-yield-us-mid14",
+      "url": "https://www.macromicro.me/charts/75/10-year-bond-yield-us-mid14"
+    },
+    {
+      "id": 76,
+      "name": "美國-2年期公債殖利率",
+      "value": "4.01",
+      "suffix": "%",
+      "slug": "2-year-bond-yield-us",
+      "url": "https://www.macromicro.me/charts/76/2-year-bond-yield-us"
+    },
+    {
+      "id": 549,
+      "name": "道瓊工業指數",
+      "value": "50,939.87",
+      "suffix": "",
+      "slug": "stock-dow-jones-average",
+      "url": "https://www.macromicro.me/charts/549/stock-dow-jones-average"
+    },
+    {
+      "id": 551,
+      "name": "S&P 500",
+      "value": "7,596.66",
+      "suffix": "",
+      "slug": "stock-sp500",
+      "url": "https://www.macromicro.me/charts/551/stock-sp500"
+    },
+    {
+      "id": 552,
+      "name": "美國-費城半導體指數",
+      "value": "13,522.33",
+      "suffix": "",
+      "slug": "stock-sox",
+      "url": "https://www.macromicro.me/charts/552/stock-sox"
+    },
+    {
+      "id": 550,
+      "name": "那斯達克",
+      "value": "27,108.14",
+      "suffix": "",
+      "slug": "stock-nasdaq",
+      "url": "https://www.macromicro.me/charts/550/stock-nasdaq"
+    },
+    {
+      "id": 74,
+      "name": "WTI西德州原油",
+      "value": "91.88",
+      "suffix": "",
+      "slug": "crude-oil-futures-mid14",
+      "url": "https://www.macromicro.me/charts/74/crude-oil-futures-mid14"
+    },
+    {
+      "id": 73,
+      "name": "黃金期貨",
+      "value": "4,554.80",
+      "suffix": "",
+      "slug": "gold-futures-mid14",
+      "url": "https://www.macromicro.me/charts/73/gold-futures-mid14"
+    }
+  ],
+  "focus_stats": [
+    {
+      "stat_id": 265,
+      "name": "美國-ISM製造業指數[PMI]",
+      "prev_value": "52.7",
+      "curr_value": "53.3",
+      "url": "https://www.macromicro.me/collections/8/us-industry-relative/54/ism"
+    },
+    {
+      "stat_id": 534,
+      "name": "美國-JOLTS非農職位空缺數",
+      "prev_value": "6866.0k",
+      "curr_value": "6860.0k",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/87/jolts"
+    },
+    {
+      "stat_id": 264,
+      "name": "美國-ADP非農就業人口 (月變動)",
+      "prev_value": "108000.0",
+      "curr_value": "116000.0",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/36/adp"
+    },
+    {
+      "stat_id": 293,
+      "name": "美國-ISM服務業指數[Services PMI]",
+      "prev_value": "53.6",
+      "curr_value": "53.7",
+      "url": "https://www.macromicro.me/collections/8/us-industry-relative/55/ism-nonmanu"
+    },
+    {
+      "stat_id": 864,
+      "name": "美國-原油庫存(週變動)",
+      "prev_value": "-3327.0k",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/19/mm-oil-price/178/us-oil-inventory"
+    },
+    {
+      "stat_id": 34,
+      "name": "美國-初次申請失業救濟金人數",
+      "prev_value": "215000.0",
+      "curr_value": "211000.0",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/19/initial-jobless-claims"
+    },
+    {
+      "stat_id": 43,
+      "name": "美國-非農就業人數(月變動)",
+      "prev_value": "115.0k",
+      "curr_value": "95.0",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/6/employment-condition"
+    },
+    {
+      "stat_id": 41,
+      "name": "美國-每小時薪資 (年增率)",
+      "prev_value": "3.57%",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/20/wage-growth"
+    },
+    {
+      "stat_id": 37,
+      "name": "美國-失業率",
+      "prev_value": "4.30%",
+      "curr_value": "4.30%",
+      "url": "https://www.macromicro.me/collections/4/us-employ-relative/6/employment-condition"
+    },
+    {
+      "stat_id": 244,
+      "name": "美國-成屋銷售 (SAAR)",
+      "prev_value": "4020000.0",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/7/us-housing-relative/31/existing-home-price"
+    },
+    {
+      "stat_id": 125,
+      "name": "美國-消費者物價指數[CPI] (NSA,年增率)",
+      "prev_value": "3.81%",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/5/us-price-relative/10/cpi"
+    },
+    {
+      "stat_id": 3304,
+      "name": "美國-生產者物價指數[PPI] (NSA,年增率)",
+      "prev_value": "5.99%",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/5/us-price-relative/26/price-index"
+    },
+    {
+      "stat_id": 72,
+      "name": "美國-密大消費者信心指數",
+      "prev_value": "44.8",
+      "curr_value": "",
+      "url": "https://www.macromicro.me/collections/3/us-consumption-relative/22/consumer-confidence"
+    }
+  ],
+  "stock_indices": [
+    {
+      "code": "EU",
+      "label": "Europe",
+      "chart_id": 543,
+      "name": "德國DAX指數",
+      "value": "25,193.69",
+      "slug": "stock-dax30",
+      "url": "https://www.macromicro.me/charts/543/stock-dax30"
+    },
+    {
+      "code": "JP",
+      "label": "Japan",
+      "chart_id": 555,
+      "name": "日經 Nikkei 225",
+      "value": "66,734.24",
+      "slug": "stock-nikkei225",
+      "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
+    },
+    {
+      "code": "TW",
+      "label": "Taiwan",
+      "chart_id": 150,
+      "name": "台灣加權指數",
+      "value": "45,557.31",
+      "slug": "tw-twii",
+      "url": "https://www.macromicro.me/charts/150/tw-twii"
+    },
+    {
+      "code": "CN",
+      "label": "China",
+      "chart_id": 280,
+      "name": "上證指數",
+      "value": "4,075.10",
+      "slug": "cn-shanghai-stock-exchange-composite-index",
+      "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
+    },
+    {
+      "code": "HK",
+      "label": "Hong Kong",
+      "chart_id": 283,
+      "name": "恆生指數",
+      "value": "26,014.50",
+      "slug": "cn-hong-kong-hang-seng-index",
+      "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
+    },
+    {
+      "code": "BR",
+      "label": "Brazil",
+      "chart_id": 2593,
+      "name": "Bovespa (IBOV)",
+      "value": "35.67",
+      "slug": "mm-ibov-index",
+      "url": "https://www.macromicro.me/charts/2593/mm-ibov-index"
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "chart_id": 2195,
+      "name": "Nifty 50",
+      "value": "31.71",
+      "slug": "mm-india-index",
+      "url": "https://www.macromicro.me/charts/2195/mm-india-index"
+    }
+  ],
+  "thematic_indicators": [
+    {
+      "label": "Recession",
+      "stat_name": "",
+      "date": "",
+      "value": "",
+      "unit": "",
+      "url": "https://www.macromicro.me/collections/8231/global-recession"
+    },
+    {
+      "label": "Spreads",
+      "stat_name": "",
+      "date": "",
+      "value": "",
+      "unit": "",
+      "url": "https://www.macromicro.me/collections/384/spreads"
+    },
+    {
+      "label": "Volatility",
+      "stat_name": "",
+      "date": "",
+      "value": "",
+      "unit": "",
+      "url": "https://www.macromicro.me/collections/4536/volatility"
+    },
+    {
+      "label": "Sentiment",
+      "stat_name": "",
+      "date": "",
+      "value": "",
+      "unit": "",
+      "url": "https://www.macromicro.me/collections/20868/global-sentiment-indicator"
+    }
+  ],
+  "cds_data": [
+    {
+      "code": "US",
+      "value": 38.19
+    },
+    {
+      "code": "UK",
+      "value": 19.11
+    },
+    {
+      "code": "France",
+      "value": 28.0
+    },
+    {
+      "code": "Japan",
+      "value": 27.1
+    },
+    {
+      "code": "China",
+      "value": 39.8
+    },
+    {
+      "code": "Italy",
+      "value": 28.64
+    },
+    {
+      "code": "Spain",
+      "value": 16.34
+    },
+    {
+      "code": "Mexico",
+      "value": null
+    },
+    {
+      "code": "Brazil",
+      "value": 118.76
+    },
+    {
+      "code": "Indonesia",
+      "value": 90.04
+    },
+    {
+      "code": "Turkey",
+      "value": 239.96
+    }
+  ]
+}
