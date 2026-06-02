@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-02T22:08:50+08:00",
+  "fetched_at": "2026-06-02T23:21:41+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -109,7 +109,7 @@
       "latest_date": "2026-05-01",
       "latest_value": 54.0,
       "n_series": 2,
-      "count_booked": 813,
+      "count_booked": 814,
       "count_comments": 2,
       "count_liked": 0,
       "description": "美國製造業與非製造業廠商預期狀況，以50為基準點。"
@@ -215,7 +215,7 @@
     {
       "id": 549,
       "name": "道瓊工業指數",
-      "value": "50,939.87",
+      "value": "51,205.04",
       "suffix": "",
       "slug": "stock-dow-jones-average",
       "url": "https://www.macromicro.me/charts/549/stock-dow-jones-average"
@@ -223,7 +223,7 @@
     {
       "id": 551,
       "name": "S&P 500",
-      "value": "7,596.66",
+      "value": "7,612.21",
       "suffix": "",
       "slug": "stock-sp500",
       "url": "https://www.macromicro.me/charts/551/stock-sp500"
@@ -231,7 +231,7 @@
     {
       "id": 552,
       "name": "美國-費城半導體指數",
-      "value": "13,522.33",
+      "value": "13,507.89",
       "suffix": "",
       "slug": "stock-sox",
       "url": "https://www.macromicro.me/charts/552/stock-sox"
@@ -239,7 +239,7 @@
     {
       "id": 550,
       "name": "那斯達克",
-      "value": "27,108.14",
+      "value": "27,121.45",
       "suffix": "",
       "slug": "stock-nasdaq",
       "url": "https://www.macromicro.me/charts/550/stock-nasdaq"
@@ -247,7 +247,7 @@
     {
       "id": 74,
       "name": "WTI西德州原油",
-      "value": "91.88",
+      "value": "92.19",
       "suffix": "",
       "slug": "crude-oil-futures-mid14",
       "url": "https://www.macromicro.me/charts/74/crude-oil-futures-mid14"
@@ -272,7 +272,7 @@
     {
       "stat_id": 534,
       "name": "美國-JOLTS非農職位空缺數",
-      "prev_value": "6866.0k",
+      "prev_value": "6887.0k",
       "curr_value": "6860.0k",
       "url": "https://www.macromicro.me/collections/4/us-employ-relative/87/jolts"
     },
@@ -360,7 +360,7 @@
       "label": "Europe",
       "chart_id": 543,
       "name": "德國DAX指數",
-      "value": "25,193.69",
+      "value": "25,090.36",
       "slug": "stock-dax30",
       "url": "https://www.macromicro.me/charts/543/stock-dax30"
     },
@@ -422,33 +422,33 @@
   "thematic_indicators": [
     {
       "label": "Recession",
-      "stat_name": "",
-      "date": "",
-      "value": "",
+      "stat_name": "全球-MM景氣衰退機率",
+      "date": "2026-04",
+      "value": "30.9",
       "unit": "",
       "url": "https://www.macromicro.me/collections/8231/global-recession"
     },
     {
       "label": "Spreads",
-      "stat_name": "",
-      "date": "",
-      "value": "",
+      "stat_name": "美國-10年期-2年期公債殖利率",
+      "date": "2026-06-02",
+      "value": "0.41",
       "unit": "",
       "url": "https://www.macromicro.me/collections/384/spreads"
     },
     {
       "label": "Volatility",
-      "stat_name": "",
-      "date": "",
-      "value": "",
+      "stat_name": "CBOE-VIX波動率指數[VIX]",
+      "date": "2026-06-01",
+      "value": "16.1",
       "unit": "",
       "url": "https://www.macromicro.me/collections/4536/volatility"
     },
     {
       "label": "Sentiment",
-      "stat_name": "",
-      "date": "",
-      "value": "",
+      "stat_name": "美國-CNN恐懼與貪婪指數",
+      "date": "2026-06-02",
+      "value": "56.5",
       "unit": "",
       "url": "https://www.macromicro.me/collections/20868/global-sentiment-indicator"
     }
@@ -484,7 +484,7 @@
     },
     {
       "code": "Mexico",
-      "value": null
+      "value": 84.54
     },
     {
       "code": "Brazil",

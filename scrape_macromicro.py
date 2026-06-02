@@ -187,15 +187,20 @@ def extract_thematic_indicators() -> list[dict]:
         start = text.rfind('<div class="collection"', 0, m.start())
         if start < 0:
             start = m.start()
-        end = text.find("</div>", m.end())
-        if end < 0:
-            end = m.end() + 500
+        end = text.find('</div>', start + 200)
+        # find the closing </div> of the .bd section (2nd or 3rd </div> after URL)
+        for _ in range(3):
+            nxt = text.find('</div>', end + 1)
+            if nxt > 0:
+                end = nxt
+            else:
+                break
         block = text[start:end]
-        sm = re.search(r'<div class="stat-name">(.*?)</div>', block)
+        sm = re.search(r'<h6 class="stat-name">(.*?)</h6>', block)
         stat_name = html.unescape(sm.group(1)) if sm else ""
-        dm = re.search(r'<div class="date">(.*?)</div>', block)
+        dm = re.search(r'<time>(.*?)</time>', block)
         date = dm.group(1) if dm else ""
-        vm = re.search(r'<div class="value">(.*?)</div>', block)
+        vm = re.search(r'<span class="val">(.*?)</span>', block)
         value = html.unescape(vm.group(1)) if vm else ""
         um = re.search(r'<span class="unit">(.*?)</span>', block)
         unit = html.unescape(um.group(1)) if um else ""
@@ -637,10 +642,10 @@ def main() -> None:
         json.dump(dashboard_data, f, ensure_ascii=False, indent=2)
     print(f"Saved dashboard data: {DASHBOARD_DATA_PATH}")
 
-    dashboard_html = generate_dashboard_html()
-    html_path = OUT_DIR / "index.html"
-    html_path.write_text(dashboard_html, encoding="utf-8")
-    print(f"Saved dashboard: {html_path}")
+    # dashboard_html = generate_dashboard_html()
+    # html_path = OUT_DIR / "index.html"
+    # html_path.write_text(dashboard_html, encoding="utf-8")
+    # print(f"Saved dashboard: {html_path}")
 
     cols = ["id", "name", "latest_date", "latest_value", "count_booked", "url"]
     with pd.option_context("display.max_colwidth", 50, "display.width", 200):
