@@ -41,12 +41,14 @@ h1{font-size:1.2rem}
 table.full thead th{font-size:.72rem;padding:6px}
 table.full tbody td{padding:6px;font-size:.75rem}
 }
-@media(prefers-color-scheme:dark){body{background:#0f172a;color:#e2e8f0} .ind-table{background:#1e293b;box-shadow:0 1px 4px rgba(0,0,0,.3)} .tbl-wrap{background:#1e293b} .side-section .tbl-wrap{background:#1e293b;box-shadow:0 1px 4px rgba(0,0,0,.3)} .ind-table h3{color:#94a3b8} .ind-table a{color:#e2e8f0} th{color:#94a3b8} .desc{color:#94a3b8} .subtitle{color:#94a3b8}}
+@media(prefers-color-scheme:dark){body{background:#0f172a;color:#e2e8f0} .ind-table,.tbl-wrap{background:#1e293b;box-shadow:0 1px 4px rgba(0,0,0,.3)} .ind-table h3{color:#94a3b8} .ind-table a{color:#e2e8f0} .side-section .tbl-wrap{background:#1e293b;box-shadow:0 1px 4px rgba(0,0,0,.3)} th{color:#94a3b8} .desc{color:#94a3b8} .subtitle{color:#94a3b8}}
 </style>
 </head>
 <body>
 <h1>MacroMicro US &mdash; Top Charts</h1>
-<p class="subtitle">Data sourced from macromicro.me &middot; <span id="updateTime"></span></p>
+<p class="subtitle">Data sourced from macromicro.me</p>
+
+<div id="indTables" class="ind-tables"></div>
 
 <div class="side-section">
 <div class="left">
@@ -73,17 +75,14 @@ table.full tbody td{padding:6px;font-size:.75rem}
 <tbody id="focusBody"></tbody>
 </table>
 </div>
-</div>
-</div>
-
-<div id="indTables" class="ind-tables"></div>
-
-<div class="card">
+<div class="tbl-wrap" style="margin-top:16px">
 <div class="section-title">KEY INDICATORS</div>
 <table class="full">
 <thead><tr><th>Name</th><th>Latest</th><th>Previous Value</th><th>Value</th><th>Description</th></tr></thead>
 <tbody id="tableBody"></tbody>
 </table>
+</div>
+</div>
 </div>
 
 <script>
@@ -94,7 +93,6 @@ const CATS = {
   Commodities: {title:'COMMODITIES', ids:[74,73]},
 };
 fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
-  document.getElementById('updateTime').textContent = 'Updated: ' + (data.fetched_at||'');
   const indicators = data.market_indicators||[];
   document.getElementById('indTables').innerHTML = Object.values(CATS).map(cat=>{
     const items = indicators.filter(i=>cat.ids.includes(i.id));
