@@ -1,4 +1,4 @@
-# Macro Economics Dashboard 全球總經儀表板
+# Macroeconomic Dashboard 全球總經儀表板
 
 Automated macro dashboard that scrapes economic indicators from MacroMicro and sovereign CDS data from Investing.com, outputs a static HTML site deployable to Vercel / GitHub Pages.
 
