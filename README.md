@@ -4,6 +4,7 @@
 
 <img width="938" height="393" alt="Screenshot 2026-06-06 113957" src="https://github.com/user-attachments/assets/c7ef39c4-dca6-498c-9a5c-997db8dfd99a" />
 
+點取連結到Dashboard → https://macro-dashboard-macross.vercel.app/
 
 Automated macro dashboard that scrapes economic indicators from MacroMicro and sovereign CDS data from Investing.com, outputs a static HTML site deployable to Vercel / GitHub Pages.
 
