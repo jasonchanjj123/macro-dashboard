@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:14:17+08:00",
+  "fetched_at": "2026-06-08T06:14:19+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -342,6 +342,15 @@
   ],
   "stock_indices": [
     {
+      "code": "EU",
+      "label": "Europe",
+      "chart_id": 543,
+      "name": "德國DAX指數",
+      "value": "24,759.05",
+      "slug": "stock-dax30",
+      "url": "https://www.macromicro.me/charts/543/stock-dax30"
+    },
+    {
       "code": "JP",
       "label": "Japan",
       "chart_id": 555,
@@ -360,6 +369,15 @@
       "url": "https://www.macromicro.me/charts/150/tw-twii"
     },
     {
+      "code": "CN",
+      "label": "China",
+      "chart_id": 280,
+      "name": "上證指數",
+      "value": "3,974.78",
+      "slug": "cn-shanghai-stock-exchange-composite-index",
+      "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
+    },
+    {
       "code": "HK",
       "label": "Hong Kong",
       "chart_id": 283,
@@ -367,24 +385,6 @@
       "value": "24,638.00",
       "slug": "cn-hong-kong-hang-seng-index",
       "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
-    },
-    {
-      "code": "BR",
-      "label": "Brazil",
-      "chart_id": 2593,
-      "name": "Bovespa (IBOV)",
-      "value": "34.01",
-      "slug": "mm-ibov-index",
-      "url": "https://www.macromicro.me/charts/2593/mm-ibov-index"
-    },
-    {
-      "code": "IN",
-      "label": "India",
-      "chart_id": 2195,
-      "name": "Nifty 50",
-      "value": "31.65",
-      "slug": "mm-india-index",
-      "url": "https://www.macromicro.me/charts/2195/mm-india-index"
     }
   ],
   "thematic_indicators": [
@@ -440,7 +440,7 @@
     },
     {
       "code": "China",
-      "value": null
+      "value": 40.6
     },
     {
       "code": "Italy",
@@ -452,7 +452,7 @@
     },
     {
       "code": "Mexico",
-      "value": 84.38
+      "value": null
     },
     {
       "code": "Brazil",
@@ -460,11 +460,11 @@
     },
     {
       "code": "Indonesia",
-      "value": null
+      "value": 94.53
     },
     {
       "code": "Turkey",
-      "value": 238.65
+      "value": null
     }
   ]
 }
