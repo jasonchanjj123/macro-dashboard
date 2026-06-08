@@ -60,9 +60,9 @@ class handler(BaseHTTPRequestHandler):
             self._reply(401, "unauthorized")
             return
 
-        repo = os.environ.get("GH_REPO")
-        token = os.environ.get("GH_TOKEN")
-        branch = os.environ.get("GH_BRANCH", "main")
+        repo = (os.environ.get("GH_REPO") or "").strip()
+        token = (os.environ.get("GH_TOKEN") or "").strip()
+        branch = (os.environ.get("GH_BRANCH") or "main").strip()
         if not repo or not token:
             self._reply(500, "missing GH_REPO or GH_TOKEN env")
             return
