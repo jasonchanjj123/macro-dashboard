@@ -24,48 +24,33 @@ SERIES_JSON_PATH = OUT_DIR / "series_last_rows.json"
 
 PROXY = os.environ.get("SCRAPER_PROXY")
 
-_BROWSER_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/131.0.0.0 Safari/537.36"
-    ),
-    "Accept": (
-        "text/html,application/xhtml+xml,application/xml;"
-        "q=0.9,image/avif,image/webp,*/*;q=0.8"
-    ),
-    "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+_GOOGLEBOT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
 }
 
-_IMPERSONATIONS = ["chrome120", "chrome110", "safari17_0", "edge101"]
+_IMPERSONATIONS = ["chrome120", "chrome110", "safari17_0"]
 
 
 def _is_blocked(text: str) -> bool:
     return len(text) < 5000 or "Just a moment" in text
 
 
-_PLAIN_REQUESTS_FAILED = False
-
-
-def _get_via_plain_requests(url: str, timeout: int):
-    global _PLAIN_REQUESTS_FAILED
-    if _PLAIN_REQUESTS_FAILED:
-        return None
+def _get_via_googlebot(url: str, timeout: int):
     proxies = {"http": PROXY, "https": PROXY} if PROXY else None
     try:
         resp = requests.get(
-            url, headers=_BROWSER_HEADERS, timeout=timeout, proxies=proxies
+            url, headers=_GOOGLEBOT_HEADERS, timeout=timeout, proxies=proxies
         )
         if resp.status_code == 200 and not _is_blocked(resp.text):
             return resp
-        if resp.status_code == 403:
-            _PLAIN_REQUESTS_FAILED = True
     except Exception:
         pass
     return None
 
 
-def _get_via_cffi(url: str, timeout: int) -> requests.Response:
+def _get_via_cffi(url: str, timeout: int):
     proxies = {"http": PROXY, "https": PROXY} if PROXY else None
     last_exc = None
     for attempt, imp in enumerate(_IMPERSONATIONS):
@@ -76,18 +61,20 @@ def _get_via_cffi(url: str, timeout: int) -> requests.Response:
             if resp.status_code == 200 and not _is_blocked(resp.text):
                 return resp
             if resp.status_code == 403:
-                last_exc = Exception(f"403 from {imp} impersonation")
-            else:
-                resp.raise_for_status()
+                last_exc = Exception(f"403 ({imp})")
+                if attempt < len(_IMPERSONATIONS) - 1:
+                    time.sleep(2**attempt)
+                continue
+            resp.raise_for_status()
         except Exception as exc:
             last_exc = exc
-        if attempt < len(_IMPERSONATIONS) - 1:
-            time.sleep(2**attempt)
-    raise last_exc or RuntimeError("All impersonation attempts failed")
+            if attempt < len(_IMPERSONATIONS) - 1:
+                time.sleep(2**attempt)
+    raise last_exc or RuntimeError("All strategies failed")
 
 
 def _fetch(url: str, timeout: int = 60):
-    resp = _get_via_plain_requests(url, timeout)
+    resp = _get_via_googlebot(url, timeout)
     if resp is not None:
         return resp
     return _get_via_cffi(url, timeout)
