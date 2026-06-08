@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:15:55+08:00",
+  "fetched_at": "2026-06-08T06:16:03+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -385,24 +385,6 @@
       "value": "24,638.00",
       "slug": "cn-hong-kong-hang-seng-index",
       "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
-    },
-    {
-      "code": "BR",
-      "label": "Brazil",
-      "chart_id": 2593,
-      "name": "Bovespa (IBOV)",
-      "value": "34.01",
-      "slug": "mm-ibov-index",
-      "url": "https://www.macromicro.me/charts/2593/mm-ibov-index"
-    },
-    {
-      "code": "IN",
-      "label": "India",
-      "chart_id": 2195,
-      "name": "Nifty 50",
-      "value": "31.65",
-      "slug": "mm-india-index",
-      "url": "https://www.macromicro.me/charts/2195/mm-india-index"
     }
   ],
   "thematic_indicators": [
@@ -450,7 +432,7 @@
     },
     {
       "code": "France",
-      "value": 28.24
+      "value": null
     },
     {
       "code": "Japan",
@@ -474,11 +456,11 @@
     },
     {
       "code": "Brazil",
-      "value": 122.25
+      "value": null
     },
     {
       "code": "Indonesia",
-      "value": 94.53
+      "value": null
     },
     {
       "code": "Turkey",
