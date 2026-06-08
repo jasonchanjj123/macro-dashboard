@@ -749,7 +749,7 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
     thematicHtml += '<tr><td>CDS</td><td>Sovereign 5Y CDS (bps)</td><td class="val">'+cdsVals+'</td></tr>';
   }
   document.getElementById('thematicBody').innerHTML = thematicHtml;
-  const charts = data.charts;
+  const charts = data.charts; 
   document.getElementById('tableBody').innerHTML = charts.map(c=>{
     const fmt = v => v!==null && !isNaN(v) ? Number(v).toFixed(2) : '-';
     const val = fmt(c.latest_value);
@@ -763,9 +763,12 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
 </html>"""
 
 
-def run_scrape() -> dict:
-    """Scrape and return the dashboard data dict. Raises on fetch failure."""
-    html_text = fetch_page()
+
+def main() -> None:
+    try:
+        html_text = fetch_page()
+    except Exception as e:
+        print(e)
     charts = json.loads(extract_js_value(html_text, "top_charts"))
 
     enriched = enrich_chart_data(charts)
