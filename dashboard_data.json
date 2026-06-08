@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T11:19:17+08:00",
+  "fetched_at": "2026-06-08T11:34:09+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -342,24 +342,6 @@
   ],
   "stock_indices": [
     {
-      "code": "EU",
-      "label": "Europe",
-      "chart_id": 543,
-      "name": "德國DAX指數",
-      "value": "24,759.05",
-      "slug": "stock-dax30",
-      "url": "https://www.macromicro.me/charts/543/stock-dax30"
-    },
-    {
-      "code": "JP",
-      "label": "Japan",
-      "chart_id": 555,
-      "name": "日經 Nikkei 225",
-      "value": "64,040.40",
-      "slug": "stock-nikkei225",
-      "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
-    },
-    {
       "code": "TW",
       "label": "Taiwan",
       "chart_id": 150,
@@ -367,15 +349,6 @@
       "value": "43,347.45",
       "slug": "tw-twii",
       "url": "https://www.macromicro.me/charts/150/tw-twii"
-    },
-    {
-      "code": "CN",
-      "label": "China",
-      "chart_id": 280,
-      "name": "上證指數",
-      "value": "3,987.06",
-      "slug": "cn-shanghai-stock-exchange-composite-index",
-      "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
     },
     {
       "code": "HK",
