@@ -83,7 +83,7 @@ def _load_proxy_pool() -> list[str]:
         cleaned.append(line)
 
     random.shuffle(cleaned)
-    _PROXY_LIST_CACHE = cleaned[:80]  # cap to keep retries bounded
+    _PROXY_LIST_CACHE = cleaned[:30]  # cap; Vercel Hobby caps duration at 300s
     print(f"[proxy-pool] loaded {len(_PROXY_LIST_CACHE)} proxies")
     return _PROXY_LIST_CACHE
 
@@ -149,7 +149,7 @@ def _fetch(url: str, timeout: int = 60):
 
     # 4) Rotate through the public proxy pool with short per-proxy timeout.
     pool = _load_proxy_pool()
-    per_proxy_timeout = 8
+    per_proxy_timeout = 5
     for i, p in enumerate(pool):
         r = _try_one(url, per_proxy_timeout, p, full_retries=False)
         if r is not None:
