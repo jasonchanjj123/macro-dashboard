@@ -10,7 +10,10 @@ from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
+import os
+
 import pandas as pd
+import requests
 from curl_cffi import requests as cffi_requests
 
 URL = "https://www.macromicro.me/macro/us"
@@ -19,28 +22,82 @@ CSV_PATH = OUT_DIR / "top_charts.csv"
 DASHBOARD_DATA_PATH = OUT_DIR / "dashboard_data.json"
 SERIES_JSON_PATH = OUT_DIR / "series_last_rows.json"
 
+PROXY = os.environ.get("SCRAPER_PROXY")
 
-class _Scraper:
-    """Thin wrapper around curl_cffi for browser impersonation."""
+_BROWSER_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/131.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;"
+        "q=0.9,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+}
 
-    def get(self, url, timeout=60):
-        return cffi_requests.get(
-            url,
-            impersonate="chrome110",
-            timeout=timeout,
-            headers={
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "en-US,en;q=0.9",
-                "User-Agent": (
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-            },
+_IMPERSONATIONS = ["chrome120", "chrome110", "safari17_0", "edge101"]
+
+
+def _is_blocked(text: str) -> bool:
+    return len(text) < 5000 or "Just a moment" in text
+
+
+_PLAIN_REQUESTS_FAILED = False
+
+
+def _get_via_plain_requests(url: str, timeout: int):
+    global _PLAIN_REQUESTS_FAILED
+    if _PLAIN_REQUESTS_FAILED:
+        return None
+    proxies = {"http": PROXY, "https": PROXY} if PROXY else None
+    try:
+        resp = requests.get(
+            url, headers=_BROWSER_HEADERS, timeout=timeout, proxies=proxies
         )
+        if resp.status_code == 200 and not _is_blocked(resp.text):
+            return resp
+        if resp.status_code == 403:
+            _PLAIN_REQUESTS_FAILED = True
+    except Exception:
+        pass
+    return None
 
 
-SCRAPER = _Scraper()
+def _get_via_cffi(url: str, timeout: int) -> requests.Response:
+    proxies = {"http": PROXY, "https": PROXY} if PROXY else None
+    last_exc = None
+    for attempt, imp in enumerate(_IMPERSONATIONS):
+        try:
+            resp = cffi_requests.get(
+                url, impersonate=imp, timeout=timeout, proxies=proxies
+            )
+            if resp.status_code == 200 and not _is_blocked(resp.text):
+                return resp
+            if resp.status_code == 403:
+                last_exc = Exception(f"403 from {imp} impersonation")
+            else:
+                resp.raise_for_status()
+        except Exception as exc:
+            last_exc = exc
+        if attempt < len(_IMPERSONATIONS) - 1:
+            time.sleep(2**attempt)
+    raise last_exc or RuntimeError("All impersonation attempts failed")
+
+
+def _fetch(url: str, timeout: int = 60):
+    resp = _get_via_plain_requests(url, timeout)
+    if resp is not None:
+        return resp
+    return _get_via_cffi(url, timeout)
+
+
+SCRAPER = type(
+    "Scraper",
+    (),
+    {"get": staticmethod(lambda url, timeout=60: _fetch(url, timeout))},
+)()
 
 
 def fetch_page(url: str = URL) -> str:
