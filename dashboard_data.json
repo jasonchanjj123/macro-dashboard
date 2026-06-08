@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:16:31+08:00",
+  "fetched_at": "2026-06-08T06:16:36+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -385,6 +385,15 @@
       "value": "24,638.00",
       "slug": "cn-hong-kong-hang-seng-index",
       "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "chart_id": 2195,
+      "name": "Nifty 50",
+      "value": "31.65",
+      "slug": "mm-india-index",
+      "url": "https://www.macromicro.me/charts/2195/mm-india-index"
     }
   ],
   "thematic_indicators": [],
@@ -395,7 +404,7 @@
     },
     {
       "code": "UK",
-      "value": 19.12
+      "value": null
     },
     {
       "code": "France",
@@ -411,7 +420,7 @@
     },
     {
       "code": "Italy",
-      "value": 29.29
+      "value": null
     },
     {
       "code": "Spain",
@@ -427,7 +436,7 @@
     },
     {
       "code": "Indonesia",
-      "value": null
+      "value": 94.53
     },
     {
       "code": "Turkey",
