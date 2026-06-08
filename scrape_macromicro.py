@@ -670,7 +670,16 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
 
 
 def main() -> None:
-    html_text = fetch_page()
+    try:
+        html_text = fetch_page()
+    except Exception as e:
+        print(f"WARNING: Could not fetch page: {e}")
+        print("Using previously committed data files (data may be stale).")
+        if CSV_PATH.exists():
+            df = pd.read_csv(CSV_PATH, encoding="utf-8-sig")
+            print(f"Loaded {len(df)} charts from existing CSV.")
+        return
+
     charts = json.loads(extract_js_value(html_text, "top_charts"))
 
     df = build_dataframe(charts)
