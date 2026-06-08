@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:16:48+08:00",
+  "fetched_at": "2026-06-08T06:17:10+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -342,22 +342,13 @@
   ],
   "stock_indices": [
     {
-      "code": "EU",
-      "label": "Europe",
-      "chart_id": 543,
-      "name": "德國DAX指數",
-      "value": "24,759.05",
-      "slug": "stock-dax30",
-      "url": "https://www.macromicro.me/charts/543/stock-dax30"
-    },
-    {
-      "code": "JP",
-      "label": "Japan",
-      "chart_id": 555,
-      "name": "日經 Nikkei 225",
-      "value": "63,600.75",
-      "slug": "stock-nikkei225",
-      "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
+      "code": "CN",
+      "label": "China",
+      "chart_id": 280,
+      "name": "上證指數",
+      "value": "3,974.78",
+      "slug": "cn-shanghai-stock-exchange-composite-index",
+      "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
     }
   ],
   "thematic_indicators": [
@@ -397,7 +388,7 @@
   "cds_data": [
     {
       "code": "US",
-      "value": 38.21
+      "value": null
     },
     {
       "code": "UK",
@@ -417,7 +408,7 @@
     },
     {
       "code": "Italy",
-      "value": 29.29
+      "value": null
     },
     {
       "code": "Spain",
@@ -429,7 +420,7 @@
     },
     {
       "code": "Brazil",
-      "value": 122.25
+      "value": null
     },
     {
       "code": "Indonesia",
