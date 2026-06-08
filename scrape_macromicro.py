@@ -606,7 +606,10 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
 
 
 def main() -> None:
-    html_text = fetch_page()
+    try:
+        html_text = fetch_page()
+    except as e:
+        print(e)
     charts = json.loads(extract_js_value(html_text, "top_charts"))
 
     df = build_dataframe(charts)
