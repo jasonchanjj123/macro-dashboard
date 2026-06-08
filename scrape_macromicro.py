@@ -1,26 +1,25 @@
 from __future__ import annotations
 
+import csv
 import html
 import io
 import json
+import os
 import re
 import sys
 import time
 from pathlib import Path
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+try:
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+except (AttributeError, ValueError):
+    pass
 
-import os
-
-import pandas as pd
 import requests
 from curl_cffi import requests as cffi_requests
 
 URL = "https://www.macromicro.me/macro/us"
-OUT_DIR = Path(__file__).parent
-CSV_PATH = OUT_DIR / "top_charts.csv"
-DASHBOARD_DATA_PATH = OUT_DIR / "dashboard_data.json"
-SERIES_JSON_PATH = OUT_DIR / "series_last_rows.json"
+DEFAULT_OUT_DIR = Path(__file__).parent
 
 PROXY = os.environ.get("SCRAPER_PROXY")
 
@@ -151,7 +150,14 @@ def parse_last_rows(raw: str):
     return prev_date, prev_val, last_date, last_val, len(series)
 
 
-def build_dataframe(charts: list[dict]) -> pd.DataFrame:
+CHART_ROW_COLUMNS = [
+    "id", "name", "slug", "url", "country", "n_series",
+    "prev_date", "prev_value", "latest_date", "latest_value",
+    "count_booked", "count_comments", "count_liked", "description",
+]
+
+
+def build_chart_rows(charts: list[dict]) -> list[dict]:
     rows = []
     for c in charts:
         prev_date, prev_val, latest_date, latest_val, n_series = parse_last_rows(
@@ -177,8 +183,15 @@ def build_dataframe(charts: list[dict]) -> pd.DataFrame:
                 .strip(),
             }
         )
-    df = pd.DataFrame(rows)
-    return df
+    return rows
+
+
+def write_chart_rows_csv(rows: list[dict], path: Path) -> None:
+    with open(path, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=CHART_ROW_COLUMNS)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
 
 
 TARGET_MARKET_IDS = {77, 144242, 75, 76, 549, 551, 552, 550, 74, 73}
@@ -669,39 +682,19 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
 </html>"""
 
 
-def main() -> None:
-    try:
-        html_text = fetch_page()
-    except Exception as e:
-        print(f"WARNING: Could not fetch page: {e}")
-        print("Using previously committed data files (data may be stale).")
-        if CSV_PATH.exists():
-            df = pd.read_csv(CSV_PATH, encoding="utf-8-sig")
-            print(f"Loaded {len(df)} charts from existing CSV.")
-        return
-
+def run_scrape() -> dict:
+    """Scrape and return the dashboard data dict. Raises on fetch failure."""
+    html_text = fetch_page()
     charts = json.loads(extract_js_value(html_text, "top_charts"))
 
-    df = build_dataframe(charts)
-    df.to_csv(CSV_PATH, index=False, encoding="utf-8-sig")
-    print(f"Saved CSV: {CSV_PATH}")
-
-    series_data = extract_all_series_data(charts)
-    with open(SERIES_JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(series_data, f, ensure_ascii=False, indent=2)
-    print(f"Saved series data: {SERIES_JSON_PATH}")
-
-    print(f"\nBuilding dashboard data ...")
     enriched = enrich_chart_data(charts)
-
     market_indicators = extract_market_indicators(html_text)
     focus_stats = extract_focus_stats(html_text)
-
     stock_indices = extract_stock_indices()
     thematic_indicators = extract_thematic_indicators()
     cds_data = extract_cds_data()
 
-    dashboard_data = {
+    return {
         "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%S+08:00"),
         "chart_count": len(enriched),
         "charts": enriched,
@@ -710,20 +703,39 @@ def main() -> None:
         "stock_indices": stock_indices,
         "thematic_indicators": thematic_indicators,
         "cds_data": cds_data,
+        "_raw_charts": charts,
     }
-    with open(DASHBOARD_DATA_PATH, "w", encoding="utf-8") as f:
+
+
+def main(out_dir: Path | None = None) -> None:
+    out_dir = out_dir or DEFAULT_OUT_DIR
+    csv_path = out_dir / "top_charts.csv"
+    dashboard_path = out_dir / "dashboard_data.json"
+    series_path = out_dir / "series_last_rows.json"
+
+    try:
+        dashboard_data = run_scrape()
+    except Exception as e:
+        print(f"WARNING: Could not fetch page: {e}")
+        print("Using previously committed data files (data may be stale).")
+        return
+
+    charts = dashboard_data.pop("_raw_charts")
+
+    rows = build_chart_rows(charts)
+    write_chart_rows_csv(rows, csv_path)
+    print(f"Saved CSV: {csv_path}")
+
+    series_data = extract_all_series_data(charts)
+    with open(series_path, "w", encoding="utf-8") as f:
+        json.dump(series_data, f, ensure_ascii=False, indent=2)
+    print(f"Saved series data: {series_path}")
+
+    with open(dashboard_path, "w", encoding="utf-8") as f:
         json.dump(dashboard_data, f, ensure_ascii=False, indent=2)
-    print(f"Saved dashboard data: {DASHBOARD_DATA_PATH}")
+    print(f"Saved dashboard data: {dashboard_path}")
 
-    # dashboard_html = generate_dashboard_html()
-    # html_path = OUT_DIR / "index.html"
-    # html_path.write_text(dashboard_html, encoding="utf-8")
-    # print(f"Saved dashboard: {html_path}")
-
-    cols = ["id", "name", "latest_date", "latest_value", "count_booked", "url"]
-    with pd.option_context("display.max_colwidth", 50, "display.width", 200):
-        print(f"\n{df[cols].to_string(index=False)}")
-    print(f"\nDone. {len(df)} charts processed.")
+    print(f"\nDone. {len(rows)} charts processed.")
 
 
 if __name__ == "__main__":
