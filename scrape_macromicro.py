@@ -38,9 +38,14 @@ def _is_blocked(text: str) -> bool:
 
 def _get_via_googlebot(url: str, timeout: int):
     proxies = {"http": PROXY, "https": PROXY} if PROXY else None
+    verify = not PROXY
     try:
         resp = requests.get(
-            url, headers=_GOOGLEBOT_HEADERS, timeout=timeout, proxies=proxies
+            url,
+            headers=_GOOGLEBOT_HEADERS,
+            timeout=timeout,
+            proxies=proxies,
+            verify=verify,
         )
         if resp.status_code == 200 and not _is_blocked(resp.text):
             return resp
@@ -51,11 +56,16 @@ def _get_via_googlebot(url: str, timeout: int):
 
 def _get_via_cffi(url: str, timeout: int):
     proxies = {"http": PROXY, "https": PROXY} if PROXY else None
+    verify = not PROXY
     last_exc = None
     for attempt, imp in enumerate(_IMPERSONATIONS):
         try:
             resp = cffi_requests.get(
-                url, impersonate=imp, timeout=timeout, proxies=proxies
+                url,
+                impersonate=imp,
+                timeout=timeout,
+                proxies=proxies,
+                verify=verify,
             )
             if resp.status_code == 200 and not _is_blocked(resp.text):
                 return resp
