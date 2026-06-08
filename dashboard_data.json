@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T07:45:51+08:00",
+  "fetched_at": "2026-06-08T08:18:37+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -183,7 +183,7 @@
     {
       "id": 77,
       "name": "美國-FedWatch升降息機率",
-      "value": "2.00",
+      "value": "2.10",
       "suffix": "%",
       "slug": "probability-fed-rate-hike",
       "url": "https://www.macromicro.me/charts/77/probability-fed-rate-hike"
@@ -247,7 +247,7 @@
     {
       "id": 74,
       "name": "WTI西德州原油",
-      "value": "94.64",
+      "value": "94.77",
       "suffix": "",
       "slug": "crude-oil-futures-mid14",
       "url": "https://www.macromicro.me/charts/74/crude-oil-futures-mid14"
@@ -373,7 +373,7 @@
       "label": "China",
       "chart_id": 280,
       "name": "上證指數",
-      "value": "3,974.78",
+      "value": "3,959.34",
       "slug": "cn-shanghai-stock-exchange-composite-index",
       "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
     },
@@ -382,7 +382,7 @@
       "label": "Hong Kong",
       "chart_id": 283,
       "name": "恆生指數",
-      "value": "24,638.00",
+      "value": "24,629.50",
       "slug": "cn-hong-kong-hang-seng-index",
       "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
     },
