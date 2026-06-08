@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:15:42+08:00",
+  "fetched_at": "2026-06-08T06:15:55+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -446,7 +446,7 @@
     },
     {
       "code": "UK",
-      "value": 19.12
+      "value": null
     },
     {
       "code": "France",
