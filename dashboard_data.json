@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:14:13+08:00",
+  "fetched_at": "2026-06-08T06:14:17+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -342,15 +342,6 @@
   ],
   "stock_indices": [
     {
-      "code": "EU",
-      "label": "Europe",
-      "chart_id": 543,
-      "name": "德國DAX指數",
-      "value": "24,759.05",
-      "slug": "stock-dax30",
-      "url": "https://www.macromicro.me/charts/543/stock-dax30"
-    },
-    {
       "code": "JP",
       "label": "Japan",
       "chart_id": 555,
@@ -358,6 +349,24 @@
       "value": "63,600.75",
       "slug": "stock-nikkei225",
       "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
+    },
+    {
+      "code": "TW",
+      "label": "Taiwan",
+      "chart_id": 150,
+      "name": "台灣加權指數",
+      "value": "43,502.78",
+      "slug": "tw-twii",
+      "url": "https://www.macromicro.me/charts/150/tw-twii"
+    },
+    {
+      "code": "HK",
+      "label": "Hong Kong",
+      "chart_id": 283,
+      "name": "恆生指數",
+      "value": "24,638.00",
+      "slug": "cn-hong-kong-hang-seng-index",
+      "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
     },
     {
       "code": "BR",
@@ -431,11 +440,11 @@
     },
     {
       "code": "China",
-      "value": 40.6
+      "value": null
     },
     {
       "code": "Italy",
-      "value": 29.29
+      "value": null
     },
     {
       "code": "Spain",
@@ -447,7 +456,7 @@
     },
     {
       "code": "Brazil",
-      "value": null
+      "value": 122.25
     },
     {
       "code": "Indonesia",
@@ -455,7 +464,7 @@
     },
     {
       "code": "Turkey",
-      "value": null
+      "value": 238.65
     }
   ]
 }
