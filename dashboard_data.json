@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:14:21+08:00",
+  "fetched_at": "2026-06-08T06:14:22+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -360,6 +360,15 @@
       "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
     },
     {
+      "code": "TW",
+      "label": "Taiwan",
+      "chart_id": 150,
+      "name": "台灣加權指數",
+      "value": "43,502.78",
+      "slug": "tw-twii",
+      "url": "https://www.macromicro.me/charts/150/tw-twii"
+    },
+    {
       "code": "CN",
       "label": "China",
       "chart_id": 280,
@@ -367,15 +376,6 @@
       "value": "3,974.78",
       "slug": "cn-shanghai-stock-exchange-composite-index",
       "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
-    },
-    {
-      "code": "BR",
-      "label": "Brazil",
-      "chart_id": 2593,
-      "name": "Bovespa (IBOV)",
-      "value": "34.01",
-      "slug": "mm-ibov-index",
-      "url": "https://www.macromicro.me/charts/2593/mm-ibov-index"
     },
     {
       "code": "IN",
@@ -460,11 +460,11 @@
     },
     {
       "code": "Indonesia",
-      "value": null
+      "value": 94.53
     },
     {
       "code": "Turkey",
-      "value": null
+      "value": 238.65
     }
   ]
 }
