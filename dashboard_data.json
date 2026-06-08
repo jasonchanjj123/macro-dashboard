@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:14:29+08:00",
+  "fetched_at": "2026-06-08T06:14:35+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -378,6 +378,15 @@
       "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
     },
     {
+      "code": "HK",
+      "label": "Hong Kong",
+      "chart_id": 283,
+      "name": "恆生指數",
+      "value": "24,638.00",
+      "slug": "cn-hong-kong-hang-seng-index",
+      "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
+    },
+    {
       "code": "BR",
       "label": "Brazil",
       "chart_id": 2593,
@@ -445,11 +454,11 @@
     },
     {
       "code": "Japan",
-      "value": 27.15
+      "value": null
     },
     {
       "code": "China",
-      "value": 40.6
+      "value": null
     },
     {
       "code": "Italy",
