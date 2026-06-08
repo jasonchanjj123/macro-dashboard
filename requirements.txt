@@ -1,2 +1,2 @@
-cloudscraper>=1.2.71
+curl_cffi>=0.7.0
 pandas>=2.0.0

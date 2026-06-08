@@ -10,17 +10,37 @@ from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
-import cloudscraper
 import pandas as pd
+from curl_cffi import requests as cffi_requests
 
 URL = "https://www.macromicro.me/macro/us"
 OUT_DIR = Path(__file__).parent
 CSV_PATH = OUT_DIR / "top_charts.csv"
 DASHBOARD_DATA_PATH = OUT_DIR / "dashboard_data.json"
 SERIES_JSON_PATH = OUT_DIR / "series_last_rows.json"
-SCRAPER = cloudscraper.create_scraper(
-    browser={"browser": "chrome", "platform": "windows", "desktop": True}
-)
+
+
+class _Scraper:
+    """Thin wrapper around curl_cffi for browser impersonation."""
+
+    def get(self, url, timeout=60):
+        return cffi_requests.get(
+            url,
+            impersonate="chrome110",
+            timeout=timeout,
+            headers={
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+            },
+        )
+
+
+SCRAPER = _Scraper()
 
 
 def fetch_page(url: str = URL) -> str:
@@ -608,7 +628,7 @@ fetch('dashboard_data.json').then(r=>r.json()).then(data=>{
 def main() -> None:
     try:
         html_text = fetch_page()
-    except as e:
+    except Exception as e:
         print(e)
     charts = json.loads(extract_js_value(html_text, "top_charts"))
 
