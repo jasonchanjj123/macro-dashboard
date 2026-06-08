@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T12:02:50+08:00",
+  "fetched_at": "2026-06-08T06:11:32+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -183,7 +183,7 @@
     {
       "id": 77,
       "name": "美國-FedWatch升降息機率",
-      "value": "3.00",
+      "value": "2.00",
       "suffix": "%",
       "slug": "probability-fed-rate-hike",
       "url": "https://www.macromicro.me/charts/77/probability-fed-rate-hike"
@@ -199,7 +199,7 @@
     {
       "id": 75,
       "name": "美國-10年期公債殖利率",
-      "value": "4.56",
+      "value": "4.57",
       "suffix": "%",
       "slug": "10-year-bond-yield-us-mid14",
       "url": "https://www.macromicro.me/charts/75/10-year-bond-yield-us-mid14"
@@ -207,7 +207,7 @@
     {
       "id": 76,
       "name": "美國-2年期公債殖利率",
-      "value": "4.16",
+      "value": "4.19",
       "suffix": "%",
       "slug": "2-year-bond-yield-us",
       "url": "https://www.macromicro.me/charts/76/2-year-bond-yield-us"
@@ -247,7 +247,7 @@
     {
       "id": 74,
       "name": "WTI西德州原油",
-      "value": "93.79",
+      "value": "94.50",
       "suffix": "",
       "slug": "crude-oil-futures-mid14",
       "url": "https://www.macromicro.me/charts/74/crude-oil-futures-mid14"
@@ -255,7 +255,7 @@
     {
       "id": 73,
       "name": "黃金期貨",
-      "value": "4,335.45",
+      "value": "4,342.00",
       "suffix": "",
       "slug": "gold-futures-mid14",
       "url": "https://www.macromicro.me/charts/73/gold-futures-mid14"
@@ -355,7 +355,7 @@
       "label": "Japan",
       "chart_id": 555,
       "name": "日經 Nikkei 225",
-      "value": "64,040.40",
+      "value": "63,600.75",
       "slug": "stock-nikkei225",
       "url": "https://www.macromicro.me/charts/555/stock-nikkei225"
     },
@@ -364,7 +364,7 @@
       "label": "Taiwan",
       "chart_id": 150,
       "name": "台灣加權指數",
-      "value": "43,347.45",
+      "value": "43,502.78",
       "slug": "tw-twii",
       "url": "https://www.macromicro.me/charts/150/tw-twii"
     },
@@ -373,7 +373,7 @@
       "label": "China",
       "chart_id": 280,
       "name": "上證指數",
-      "value": "3,987.06",
+      "value": "3,974.78",
       "slug": "cn-shanghai-stock-exchange-composite-index",
       "url": "https://www.macromicro.me/charts/280/cn-shanghai-stock-exchange-composite-index"
     },
@@ -382,7 +382,7 @@
       "label": "Hong Kong",
       "chart_id": 283,
       "name": "恆生指數",
-      "value": "24,649.50",
+      "value": "24,638.00",
       "slug": "cn-hong-kong-hang-seng-index",
       "url": "https://www.macromicro.me/charts/283/cn-hong-kong-hang-seng-index"
     },
@@ -417,8 +417,8 @@
     {
       "label": "Spreads",
       "stat_name": "美國-10年期-2年期公債殖利率",
-      "date": "2026-06-07",
-      "value": "0.37",
+      "date": "2026-06-08",
+      "value": "0.38",
       "unit": "",
       "url": "https://www.macromicro.me/collections/384/spreads"
     },
