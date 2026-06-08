@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:14:06+08:00",
+  "fetched_at": "2026-06-08T06:14:08+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -442,7 +442,7 @@
   "cds_data": [
     {
       "code": "US",
-      "value": 38.21
+      "value": null
     },
     {
       "code": "UK",
@@ -462,7 +462,7 @@
     },
     {
       "code": "Italy",
-      "value": null
+      "value": 29.29
     },
     {
       "code": "Spain",
@@ -474,7 +474,7 @@
     },
     {
       "code": "Brazil",
-      "value": null
+      "value": 122.25
     },
     {
       "code": "Indonesia",
@@ -482,7 +482,7 @@
     },
     {
       "code": "Turkey",
-      "value": 238.65
+      "value": null
     }
   ]
 }
