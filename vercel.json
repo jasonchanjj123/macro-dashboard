@@ -1,5 +1,4 @@
 {
-  "routes": [{ "src": "/", "dest": "/index.html" }],
   "functions": {
     "api/cron-scrape.py": {
       "maxDuration": 300
