@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/cron.py": {
-      "maxDuration": 300
-    }
-  },
   "crons": [
     {
       "path": "/api/cron",

@@ -1,2 +1,3 @@
 [tool.vercel]
 entrypoint = "api.cron:handler"
+maxDuration = 300
