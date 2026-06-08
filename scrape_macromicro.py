@@ -21,7 +21,19 @@ from curl_cffi import requests as cffi_requests
 URL = "https://www.macromicro.me/macro/us"
 DEFAULT_OUT_DIR = Path(__file__).parent
 
-PROXY = os.environ.get("SCRAPER_PROXY")
+import random
+
+PROXY = (os.environ.get("SCRAPER_PROXY") or "").strip()
+# Comma-separated proxy URLs OR an http(s) URL returning a newline-separated list.
+PROXY_LIST_SRC = (os.environ.get("SCRAPER_PROXY_LIST") or "").strip()
+
+_PROXY_LIST_CACHE: list[str] | None = None
+_WORKING_PROXY: str | None = None
+
+_DEFAULT_PROXY_LIST_URLS = [
+    "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt",
+    "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt",
+]
 
 _GOOGLEBOT_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
@@ -36,57 +48,116 @@ def _is_blocked(text: str) -> bool:
     return len(text) < 5000 or "Just a moment" in text
 
 
-def _get_via_googlebot(url: str, timeout: int):
-    proxies = {"http": PROXY, "https": PROXY} if PROXY else None
-    verify = not PROXY
+def _load_proxy_pool() -> list[str]:
+    """Return a list of proxy URLs (no protocol = assume http://)."""
+    global _PROXY_LIST_CACHE
+    if _PROXY_LIST_CACHE is not None:
+        return _PROXY_LIST_CACHE
+
+    raw_lines: list[str] = []
+
+    sources: list[str] = []
+    if PROXY_LIST_SRC:
+        if PROXY_LIST_SRC.startswith("http"):
+            sources.append(PROXY_LIST_SRC)
+        else:
+            raw_lines.extend(PROXY_LIST_SRC.split(","))
+    else:
+        sources.extend(_DEFAULT_PROXY_LIST_URLS)
+
+    for src in sources:
+        try:
+            r = requests.get(src, timeout=15)
+            if r.status_code == 200:
+                raw_lines.extend(r.text.splitlines())
+        except Exception:
+            continue
+
+    cleaned: list[str] = []
+    for line in raw_lines:
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "://" not in line:
+            line = "http://" + line
+        cleaned.append(line)
+
+    random.shuffle(cleaned)
+    _PROXY_LIST_CACHE = cleaned[:80]  # cap to keep retries bounded
+    print(f"[proxy-pool] loaded {len(_PROXY_LIST_CACHE)} proxies")
+    return _PROXY_LIST_CACHE
+
+
+def _proxies_dict(proxy_url: str | None):
+    if not proxy_url:
+        return None
+    return {"http": proxy_url, "https": proxy_url}
+
+
+def _try_one(url: str, timeout: int, proxy_url: str | None, full_retries: bool = True):
+    """Try a single fetch; return Response if it looks good, else None.
+
+    full_retries=False keeps it cheap when iterating through a public proxy pool:
+    just one cffi attempt instead of cycling impersonations.
+    """
+    proxies = _proxies_dict(proxy_url)
+    verify = not proxy_url
+
     try:
-        resp = requests.get(
-            url,
-            headers=_GOOGLEBOT_HEADERS,
-            timeout=timeout,
-            proxies=proxies,
-            verify=verify,
+        r = requests.get(
+            url, headers=_GOOGLEBOT_HEADERS, timeout=timeout, proxies=proxies, verify=verify
         )
-        if resp.status_code == 200 and not _is_blocked(resp.text):
-            return resp
+        if r.status_code == 200 and not _is_blocked(r.text):
+            return r
     except Exception:
         pass
+
+    impersonations = _IMPERSONATIONS if full_retries else _IMPERSONATIONS[:1]
+    for imp in impersonations:
+        try:
+            r = cffi_requests.get(
+                url, impersonate=imp, timeout=timeout, proxies=proxies, verify=verify
+            )
+            if r.status_code == 200 and not _is_blocked(r.text):
+                return r
+        except Exception:
+            continue
     return None
 
 
-def _get_via_cffi(url: str, timeout: int):
-    proxies = {"http": PROXY, "https": PROXY} if PROXY else None
-    verify = not PROXY
-    last_exc = None
-    for attempt, imp in enumerate(_IMPERSONATIONS):
-        try:
-            resp = cffi_requests.get(
-                url,
-                impersonate=imp,
-                timeout=timeout,
-                proxies=proxies,
-                verify=verify,
-            )
-            if resp.status_code == 200 and not _is_blocked(resp.text):
-                return resp
-            if resp.status_code == 403:
-                last_exc = Exception(f"403 ({imp})")
-                if attempt < len(_IMPERSONATIONS) - 1:
-                    time.sleep(2**attempt)
-                continue
-            resp.raise_for_status()
-        except Exception as exc:
-            last_exc = exc
-            if attempt < len(_IMPERSONATIONS) - 1:
-                time.sleep(2**attempt)
-    raise last_exc or RuntimeError("All strategies failed")
-
-
 def _fetch(url: str, timeout: int = 60):
-    resp = _get_via_googlebot(url, timeout)
-    if resp is not None:
-        return resp
-    return _get_via_cffi(url, timeout)
+    global _WORKING_PROXY
+
+    # 1) Try the last-known-working proxy first (sticky across URLs in one run).
+    if _WORKING_PROXY:
+        r = _try_one(url, timeout, _WORKING_PROXY)
+        if r is not None:
+            return r
+        _WORKING_PROXY = None
+
+    # 2) Try explicit SCRAPER_PROXY (e.g., ScraperAPI) if set.
+    if PROXY:
+        r = _try_one(url, timeout, PROXY)
+        if r is not None:
+            _WORKING_PROXY = PROXY
+            return r
+
+    # 3) Try direct (no proxy).
+    r = _try_one(url, timeout, None)
+    if r is not None:
+        return r
+
+    # 4) Rotate through the public proxy pool with short per-proxy timeout.
+    pool = _load_proxy_pool()
+    per_proxy_timeout = 8
+    for i, p in enumerate(pool):
+        r = _try_one(url, per_proxy_timeout, p, full_retries=False)
+        if r is not None:
+            print(f"[proxy-pool] success via {p} (attempt {i+1})")
+            _WORKING_PROXY = p
+            return r
+
+    raise RuntimeError(f"All proxies failed for {url}")
 
 
 SCRAPER = type(
