@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-08T06:16:10+08:00",
+  "fetched_at": "2026-06-08T06:16:14+08:00",
   "chart_count": 11,
   "charts": [
     {
@@ -394,6 +394,15 @@
       "value": "34.01",
       "slug": "mm-ibov-index",
       "url": "https://www.macromicro.me/charts/2593/mm-ibov-index"
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "chart_id": 2195,
+      "name": "Nifty 50",
+      "value": "31.65",
+      "slug": "mm-india-index",
+      "url": "https://www.macromicro.me/charts/2195/mm-india-index"
     }
   ],
   "thematic_indicators": [
@@ -441,19 +450,19 @@
     },
     {
       "code": "France",
-      "value": null
+      "value": 28.24
     },
     {
       "code": "Japan",
-      "value": null
+      "value": 27.15
     },
     {
       "code": "China",
-      "value": 40.6
+      "value": null
     },
     {
       "code": "Italy",
-      "value": 29.29
+      "value": null
     },
     {
       "code": "Spain",
